@@ -1,0 +1,9 @@
+version: "3"
+services:
+  artillery:
+    build:
+      context: .
+    ports:
+      - 80:80
+    volumes:
+      - "./config.yml:/artillery/config/config.yml"
