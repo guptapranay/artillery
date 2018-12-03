@@ -1,0 +1,10 @@
+config:
+  target: 'https://google.fr'
+  phases:
+    - duration: 10
+      arrivalRate: 2
+scenarios:
+  - flow:
+    - get:
+        url: "/"
+

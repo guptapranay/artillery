@@ -1,10 +1,14 @@
 #!/bin/bash
-
+#set -x
 echo "Starting artillery..."
-artillery run -o /tmp/report.json /artillery/config/config.yml
 
-echo "Generating report..."
-artillery report /tmp/report.json
+for cfg_file in `ls /artillery/config/ | grep yml`
+do
+	echo "Launching rockets for ${cfg_file}"
+	artillery run -o /tmp/report_${cfg_file}.json /artillery/config/${cfg_file}
+	echo "Generating report for ${cfg_file}"
+	artillery report /tmp/report_${cfg_file}.json
+done
 
 echo "Archiving report in /var/www/localhost/htdocs/..."
 cp /tmp/report* /var/www/localhost/htdocs/

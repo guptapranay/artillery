@@ -6,4 +6,4 @@ services:
     ports:
       - 80:80
     volumes:
-      - "./config.yml:/artillery/config/config.yml"
+      - "./config/:/artillery/config/"
